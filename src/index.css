@@ -26,6 +26,14 @@ body {
   align-items: center;
  
 }
+
+.homepage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .main-div{
   width: 100%;
   height: auto;
@@ -406,12 +414,12 @@ button:active{
 @media (min-width: 320px) and (max-width: 425px){
 
   html,body{
-    width: 100vb;
+    width: 425px;
     height: 100vh;
   }
 
   .main-div{
-    width: 100vb;
+    width: 425px;
     height: 1000px;
   }
 
@@ -489,5 +497,9 @@ button:active{
 
 }
 
-
-
+@media (min-width: 1440px){
+  .homepage > button{
+    position: relative;
+    left: -5px;
+  }
+}
