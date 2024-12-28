@@ -9,6 +9,11 @@ export default function Table({
   validation,
   inputData,
   error,
+  setInputData,
+  setUpdateData,
+  scrollToTop,
+  rowRefs,
+  handleDelete
 }) {
   const [theme, settheme] = useState(true);
   console.log(data);
@@ -39,7 +44,7 @@ export default function Table({
               ></Input>
               <Input
                 label="Enrollment Date"
-                name={"enrollment date"}
+                name={"enrollment_date"}
                 placeholder="Enter your enrollment date"
                 type={"date"}
                 onchange={onInputChange}
@@ -77,13 +82,13 @@ export default function Table({
             <button
               className="cell5 submit"
               onClick={() => {
-                validation();
+                validation(true);
               }}
             >
               SUBMIT
             </button>
           </div>
-          <button
+          <button className="themebtn"
             onClick={() => {
               settheme(!theme);
             }}
@@ -124,7 +129,9 @@ export default function Table({
             </tr>
 
             {Object.entries(data).map(([key, element]) => (
-              <tr key={key}>
+              <tr key={key} ref={(el) => {
+                rowRefs.current[key] = el
+              }}>
                 <td>
                   <div className="cell1">
                     <div className="textinfo">
@@ -139,15 +146,24 @@ export default function Table({
                 </td>
                 <td>
                   <div className="cell3">
-                    {element.semester}, {element.gpa}
+                    {element.semester} {"and"} {element.gpa}
                   </div>
                 </td>
                 <td>
                   <div className="cell4">{element.major}</div>
                 </td>
                 <td>
-                  <div className={`cell5`}>
+                  <div className="actionbtns">
+                  <div className={`cell5`} onClick={()=>{
+                    setUpdateData(key)
+                    setInputData({...element});
+                    scrollToTop();
+                  }}>
                     <p>EDIT</p>
+                  </div>
+                  <div className="deletebtn">
+                  <button onClick={() => handleDelete(key)}><i class="fa-solid fa-trash"></i></button>
+                  </div>
                   </div>
                 </td>
               </tr>
