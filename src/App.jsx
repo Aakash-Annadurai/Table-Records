@@ -28,12 +28,17 @@ function App() {
 
   const onInputChange = (e) => {
     let temp = inputData;
-    temp[e.target.name] = e.target.value;
+    const name =e.target.name
+    temp[name] = e.target.value;
     setInputData({ ...temp });
-    validation();
+    validationForKey(name);
     console.log(temp);
   };
-
+  const highlightRow = (index) => {
+    if (rowRefs.current[index]) {
+      rowRefs.current[index].style.backgroundColor = "yellow";
+    }
+  };
   const handleReset = () => {
     setInputData({
       ...{
@@ -59,7 +64,15 @@ function App() {
           Object.keys(value).length === 0)
     );
   }
-
+const validationForKey =(key)=>{
+  let temp = error;
+  if (!inputData[key]) {
+    temp[key] = `*require vaild ${key}`;
+  } else {
+    temp[key] = "";
+  }
+  setError({ ...temp });
+}
   const validation = (click = false) => {
     let temp = error;
     Object.entries(inputData).map(([key, element]) => {

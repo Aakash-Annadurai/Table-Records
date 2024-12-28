@@ -39,7 +39,7 @@ export default function Table({
               ></Input>
               <Input
                 label="Enrollment Date"
-                name={"enrollment date"}
+                name={"enrollment_date"}
                 placeholder="Enter your enrollment date"
                 type={"date"}
                 onchange={onInputChange}
@@ -77,7 +77,7 @@ export default function Table({
             <button
               className="cell5 submit"
               onClick={() => {
-                validation();
+                validation(true);
               }}
             >
               SUBMIT
