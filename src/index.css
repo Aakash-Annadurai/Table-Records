@@ -24,17 +24,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
-.homepage{
+.homepage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.main-div{
+.main-div {
   width: 100%;
   height: auto;
   gap: 20px;
@@ -43,35 +42,25 @@ body {
   align-items: center;
   justify-content: center;
   background: #404040;
-
-
 }
-table{
-width: 90%;
-border-collapse: collapse;
+table {
+  width: 90%;
+  border-collapse: collapse;
 }
-td,th{
-  border-bottom: 1px solid #4D4D4D;
+td,
+th {
+  border-bottom: 1px solid #4d4d4d;
   padding: 20px;
   width: 338.6px;
   height: 48px;
-
 }
-.arrow{
+.arrow {
   position: relative;
-  top:6px;
-}
-
-.profimg{
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
-  object-fit: cover;
-  position: relative;
+  top: 6px;
 }
 
 
-button{
+button {
   width: 50px;
   height: 50px;
   position: relative;
@@ -82,33 +71,25 @@ button{
   cursor: pointer;
   background-color: #000000;
 }
-button:active{
+button:active {
   opacity: 0.6;
 }
 
-.googlelogo{
-  width: 24px;
-  height: 24px;
-}
 
-.mailicon{
-  width: 24px;
-  height: 24px;
-}
-
-
-.cell2,.cell3,.cell4{
+.cell2,
+.cell3,
+.cell4 {
   font-size: 18px;
   font-weight: 400;
   line-height: 22.5px;
 }
 
-.cell2{
+.cell2 {
   position: relative;
   left: 15px;
 }
 
-.cell3{
+.cell3 {
   position: relative;
   left: 40px;
   display: flex;
@@ -116,7 +97,7 @@ button:active{
   align-items: center;
 }
 
-.cell4{
+.cell4 {
   position: relative;
   left: 50px;
   display: flex;
@@ -124,57 +105,59 @@ button:active{
   align-items: center;
 }
 
-.cell5{
+.cell5 {
   background-color: rgb(228, 73, 73);
   border-radius: 8px;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;
   position: relative;
-  left: 50px;
+  left: 65px;
+  width: 100px;
 }
 
-
-.circle{
-  width: 8px;
-  height: 8px;
-  background-color: rgb(254, 254, 254);
-  border-radius: 100%;
-  margin-right: 8px;
+.cell5.submit{
+  font-weight: 600;
+  width: 80px;
+  height: 40px;
+  left: 0px;
 }
 
-
-.color-light{
-  background-color: #FFFFFF;
+.cell5 > p{
+  margin: 0;
 }
 
-.color-dark{
-  background-color: #1A1A1A;
-  color: #E6E6E6;
+.color-light {
+  background-color: #ffffff;
 }
 
-.cell1{
+.color-dark {
+  background-color: #1a1a1a;
+  color: #e6e6e6;
+}
+
+.cell1 {
   display: flex;
   gap: 8px;
   flex-direction: row;
   align-items: center;
 }
 
-
-.name, .mail{
+.name,
+.mail {
   width: 100px;
   position: relative;
 }
 
-.name{
+.name {
   font-size: 18px;
   font-weight: 400;
   line-height: 22.5px;
 }
-.mail{
+.mail {
   display: flex;
   align-items: center;
   height: 25.5px;
@@ -184,321 +167,255 @@ button:active{
   line-height: 17.5px;
 }
 
-.cell5.theme{
+.cell5.theme {
   width: 20%;
 }
 
-.cell5.store1{
-  width: 125px;
-  padding: 0;
-  gap: 5px;
-  border-radius: 8px;
-  background: #E1E1E1;
-  color: #3E3E3E;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  height: 36px;
-}
-.circle.store1{
-  background: #3E3E3E;
+input{
+  width: 400px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: #000000;
 }
 
-.cell5.store2{
-  width: 125px;
-  padding: 0;
-  gap: 5px;
-  border-radius: 8px;
-  background: #FCC3C3;
-  color: #3E3E3E;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  height: 36px;
-}
-.circle.store2{
-  background: #BE0000;
+.singleInput{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 5px;
+  gap: 10px;
+  color: white;
 }
 
-.cell5.store3{
-  width: 125px;
-  padding: 0;
-  gap: 5px;
-  border-radius: 8px;
-  background: #C5C6FC;
-  color: #3E3E3E;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  height: 36px;
-}
-.circle.store3{
-  background: #4900BE;
+.inputcolumn{
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.cell5.store4{
-  width: 125px;
-  padding: 0;
-  gap: 5px;
-  border-radius: 8px;
-  background: #FCEDC5;
-  color: #3E3E3E;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  height: 36px;
-}
-.circle.store4{
-  background: #BE8800;
+.InputForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-@media (min-width: 768px) and (max-width: 1024px){
+.error{
+  font-size: 12px;
+  color: rgb(255, 0, 0);
+  margin: 0;
+}
 
-  html,body{
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  html,
+  body {
     width: 1024px;
     height: 100vh;
   }
 
-  th,td{
+  th,
+  td {
     padding: 18px;
   }
 
-  .sorter{
-    font-size:14px ;
+  .sorter {
+    font-size: 14px;
   }
 
-  .name{
+  .name {
     font-size: 16px;
   }
 
-  .mail{
+  .mail {
     font-size: 12px;
   }
 
-  .cell2,.cell3,.cell4{
+  .cell2,
+  .cell3,
+  .cell4 {
     font-size: 16px;
   }
 
-  .cell5.store1,.cell5.store2,.cell5.store3,.cell5.store4{
+  .cell5.store1,
+  .cell5.store2,
+  .cell5.store3,
+  .cell5.store4 {
     font-size: 12px;
     gap: 2.5px;
     width: 122.5px;
     height: 34px;
   }
-  .circle{
-    width: 6px;
-    height: 6px;
-  }
-  
-  .googlelogo{
-    width: 22px;
-    height: 22px;
-  }
 
-  .mailicon{
-    width: 22px;
-    height: 22px;
-  }
-
-  .profimg{
-    width: 34px;
-    height: 34px;
-  }
-
-  .cell3{
+  .cell3 {
     left: 1px;
   }
 
-  .cell4{
+  .cell4 {
     left: 1px;
   }
 
-  .cell5{
+  .cell5 {
     padding: 8px;
     left: 1px;
   }
-  button{
+  button {
     left: 400px;
   }
-  .arrow{
+  .arrow {
     width: 20px;
     height: 20px;
   }
-
 }
 
-@media (min-width: 425px) and (max-width: 768px){
-
-  html,body{
+@media (min-width: 425px) and (max-width: 768px) {
+  html,
+  body {
     width: 768px;
     height: 100vh;
   }
 
-  .main-div{
+  .main-div {
     width: 768px;
   }
 
-  th,td{
+  th,
+  td {
     padding: 12px;
   }
 
-  .sorter{
-    font-size:12px ;
-  }
-
-  .name{
-    font-size: 14px;
-  }
-
-  .mail{
-    font-size: 10px;
-  }
-
-  .cell2,.cell3,.cell4{
+  .sorter {
     font-size: 12px;
   }
 
-  .cell5.store1,.cell5.store2,.cell5.store3,.cell5.store4{
+  .name {
+    font-size: 14px;
+  }
+
+  .mail {
     font-size: 10px;
-    
+  }
+
+  .cell2,
+  .cell3,
+  .cell4 {
+    font-size: 12px;
+  }
+
+  .cell5.store1,
+  .cell5.store2,
+  .cell5.store3,
+  .cell5.store4 {
+    font-size: 10px;
+
     width: 90px;
     height: 30px;
   }
-  .circle{
-    width: 4px;
-    height: 4px;
-  }
-  
-  .googlelogo{
-    width: 20px;
-    height: 20px;
-  }
 
-  .mailicon{
-    width: 20px;
-    height: 20px;
-  }
-
-  .profimg{
-    width: 32px;
-    height: 32px;
-  }
-
-  .cell2{
+  .cell2 {
     left: 1px;
   }
 
-  .cell3{
+  .cell3 {
     left: 1px;
   }
 
-  .cell4{
+  .cell4 {
     left: 1px;
   }
 
-  .cell5{
+  .cell5 {
     padding: 6px;
     left: 1px;
   }
-  button{
+  button {
     left: 300px;
   }
-  .arrow{
+  .arrow {
     top: 3px;
     width: 18px;
     height: 18px;
   }
-
 }
 
-@media (min-width: 320px) and (max-width: 425px){
-
-  html,body{
+@media (min-width: 320px) and (max-width: 425px) {
+  html,
+  body {
     width: 425px;
     height: 100vh;
   }
 
-  .main-div{
+  .main-div {
     width: 425px;
     height: 1000px;
   }
 
-
-  th,td{
+  th,
+  td {
     padding: 12px;
   }
 
-  .sorter{
-    font-size:12px ;
-  }
-
-  .name{
-    font-size: 14px;
-  }
-
-  .mail{
-    font-size: 10px;
-  }
-
-  .cell2,.cell3,.cell4{
+  .sorter {
     font-size: 12px;
   }
 
-  .cell5.store1,.cell5.store2,.cell5.store3,.cell5.store4{
+  .name {
+    font-size: 14px;
+  }
+
+  .mail {
     font-size: 10px;
-    
+  }
+
+  .cell2,
+  .cell3,
+  .cell4 {
+    font-size: 12px;
+  }
+
+  .cell5.store1,
+  .cell5.store2,
+  .cell5.store3,
+  .cell5.store4 {
+    font-size: 10px;
+
     width: 90px;
     height: 30px;
   }
-  .circle{
-    width: 4px;
-    height: 4px;
-  }
   
-  .googlelogo{
-    width: 20px;
-    height: 20px;
-  }
-
-  .mailicon{
-    width: 20px;
-    height: 20px;
-  }
-
-  .profimg{
-    width: 32px;
-    height: 32px;
-  }
-
-  .cell2{
+  .cell2 {
     left: 1px;
   }
 
-  .cell3{
+  .cell3 {
     left: 1px;
   }
 
-  .cell4{
+  .cell4 {
     left: 1px;
   }
 
-  .cell5{
+  .cell5 {
     padding: 6px;
     left: 1px;
   }
-  button{
+  button {
     left: 550px;
   }
-  .arrow{
+  .arrow {
     top: 3px;
     width: 18px;
     height: 18px;
   }
-
 }
 
-@media (min-width: 1440px){
-  .homepage > button{
+@media (min-width: 1440px) {
+  .homepage > button {
     position: relative;
     left: -5px;
   }

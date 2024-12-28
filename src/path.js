@@ -1,8 +1,6 @@
 const path = {
-    home:"/",
-    table:"/table-demo"
+  home: "/",
+  table: "/table-demo",
 };
 
 export default path;
-
-
