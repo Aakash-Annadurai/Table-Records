@@ -1,7 +1,7 @@
 import React from "react";
-import sorter from "./assets/sorter.png";
+import sorter from "../assets/sorter.png";
 import { useState } from "react";
-import Input from "./components/Input";
+import Input from "./Input";
 
 export default function Table({
   data,
@@ -13,16 +13,17 @@ export default function Table({
   setUpdateData,
   scrollToTop,
   rowRefs,
-  handleDelete
+  handleDelete,
+  setTableTheme,
 }) {
   const [theme, settheme] = useState(true);
-  console.log(data);
 
   return (
     <>
       {data ? (
         <div className={`main-div `}>
           <div className="InputForm">
+            <h2 className="formtitle">STUDENT FORM</h2>
             <div className="inputcolumn">
               <Input
                 label="Name"
@@ -88,7 +89,8 @@ export default function Table({
               SUBMIT
             </button>
           </div>
-          <button className="themebtn"
+          <button
+            className="themebtn"
             onClick={() => {
               settheme(!theme);
             }}
@@ -100,6 +102,7 @@ export default function Table({
             )}
           </button>
           <table className={theme ? "color-light" : "color-dark"}>
+            <caption>TABLE</caption>
             <tr className="headingrow">
               <th>
                 <div className="sorter">
@@ -129,9 +132,12 @@ export default function Table({
             </tr>
 
             {Object.entries(data).map(([key, element]) => (
-              <tr key={key} ref={(el) => {
-                rowRefs.current[key] = el
-              }}>
+              <tr
+                key={key}
+                ref={(el) => {
+                  rowRefs.current[key] = el;
+                }}
+              >
                 <td>
                   <div className="cell1">
                     <div className="textinfo">
@@ -154,16 +160,27 @@ export default function Table({
                 </td>
                 <td>
                   <div className="actionbtns">
-                  <div className={`cell5`} onClick={()=>{
-                    setUpdateData(key)
-                    setInputData({...element});
-                    scrollToTop();
-                  }}>
-                    <p>EDIT</p>
-                  </div>
-                  <div className="deletebtn">
-                  <button onClick={() => handleDelete(key)}><i class="fa-solid fa-trash"></i></button>
-                  </div>
+                    <div
+                      className={`cell5`}
+                      onClick={() => {
+                        setUpdateData(key);
+                        setInputData({ ...element });
+                        scrollToTop();
+                        setTableTheme(theme);
+                      }}
+                    >
+                      <p>EDIT</p>
+                    </div>
+                    <div className="deletebtn">
+                      <button
+                        onClick={() => {
+                          handleDelete(key);
+                          setTableTheme(theme);
+                        }}
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -172,7 +189,7 @@ export default function Table({
         </div>
       ) : (
         <div>
-          <h1>LOADING..</h1>
+          <h2>LOADING..</h2>
         </div>
       )}
     </>

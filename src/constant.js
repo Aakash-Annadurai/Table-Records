@@ -1,5 +1,3 @@
-import { Route } from "react-router-dom";
-
 const path = {
   home: "/",
   table: "/table-demo",
@@ -7,15 +5,16 @@ const path = {
 
 export default path;
 
+export const method = {
+  delete: "DELETE",
+  get: "GET",
+  post: "POST",
+  put: "PUT",
+};
 
-export const method={
-delete:"DELETE",
-get:"GET",
-post:"POST",
-put:"PUT"
-}
-
-export const route={
-  delete:(id)=>`/delete/${id}`,
-  add:"/add"
-}
+export const route = {
+  delete: (id) => `/delete/${id}`,
+  get: "",
+  add: "/add",
+  put: (updateData) => `/update/${updateData}`,
+};

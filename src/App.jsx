@@ -1,13 +1,17 @@
 import React from "react";
-import Table from "./Table";
-import { Route, Routes} from "react-router-dom";
+import Table from "./components/Table";
+import { Route, Routes } from "react-router-dom";
 import path, { method, route } from "./constant";
 import Home from "./components/Home";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { areAllKeysEmpty, scrollTobottom, scrollToTop } from "./utils/commonfunctions";
-import { genrealService } from "./utils/servicesUtils";
+import {
+  areAllKeysEmpty,
+  scrollToBottom,
+  scrollToTop,
+} from "./utils/commonfunctions";
+import { generalService } from "./utils/servicesUtils";
 
 function App() {
   const [studentData, setStudentData] = useState([]);
@@ -21,7 +25,6 @@ function App() {
   });
 
   const [updateData, setUpdateData] = useState();
-  const [deleteData, setDeleteData] = useState();
 
   const [error, setError] = useState({
     name: "",
@@ -32,20 +35,18 @@ function App() {
     enrollment_date: "",
   });
 
+  const [tableTheme, setTableTheme] = useState(true);
+
   const rowRefs = useRef([]);
 
   const onInputChange = (e) => {
     let temp = inputData;
-    const name =e.target.name
+    const name = e.target.name;
     temp[name] = e.target.value;
     setInputData({ ...temp });
     validationForKey(name);
   };
-  // const highlightRow = (index) => {
-  //   if (rowRefs.current[index]) {
-  //     rowRefs.current[index].style.backgroundColor = "yellow";
-  //   }
-  // };
+
   const handleReset = () => {
     setInputData({
       ...{
@@ -59,16 +60,15 @@ function App() {
     });
   };
 
-  
-const validationForKey =(key)=>{
-  let temp = error;
-  if (!inputData[key]) {
-    temp[key] = `*require vaild ${key}`;
-  } else {
-    temp[key] = "";
-  }
-  setError({ ...temp });
-}
+  const validationForKey = (key) => {
+    let temp = error;
+    if (!inputData[key]) {
+      temp[key] = `*require vaild ${key}`;
+    } else {
+      temp[key] = "";
+    }
+    setError({ ...temp });
+  };
   const validation = (click = false) => {
     let temp = error;
     Object.entries(inputData).map(([key, element]) => {
@@ -80,7 +80,9 @@ const validationForKey =(key)=>{
       }
     });
     if (areAllKeysEmpty(temp) && click) {
-      {updateData ? putStudentData() : postStudentData();}
+      {
+        updateData ? putStudentData() : postStudentData();
+      }
     }
     setError({ ...temp });
   };
@@ -89,71 +91,61 @@ const validationForKey =(key)=>{
     if (rowRefs.current[index]) {
       rowRefs.current[index].style.backgroundColor = "yellow";
       rowRefs.current[index].scrollIntoView({
-        behavior: "smooth", 
+        behavior: "smooth",
         block: "center",
       });
       setTimeout(() => {
-        rowRefs.current[index].style.backgroundColor = "white";
-      }, 2000); 
-    
+        rowRefs.current[index].style.backgroundColor = tableTheme
+          ? "#fffcf5"
+          : "#1a1a1a";
+      }, 2000);
     }
   };
 
-
-
   const putStudentData = async () => {
-    const url = `https://studentinfoapi.p.rapidapi.com/students/update/${updateData}`;
-const options = {
-	method: 'PUT',
-	headers: {
-		'x-rapidapi-key': '15ffea1c9fmsh31fafcf35aab04cp1f718ejsnd16f8057c7cf',
-		'x-rapidapi-host': 'studentinfoapi.p.rapidapi.com',
-		'Content-Type': 'application/json'
-	},
-	body: JSON.stringify(inputData),
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-  console.log(result);
-  handleReset();
-  alert("Updated Successfully!")
-  getStudentData();
-  highlightRow(updateData);
-  setUpdateData(null);
-} catch (error) {
-	console.error(error);
-}
-  }
+    const body = JSON.stringify(inputData);
+    const result = await generalService(
+      method.put,
+      route.put(updateData),
+      { Content_Type: "application/json" },
+      body
+    );
+    handleReset();
+    alert("Updated Successfully!");
+    getStudentData();
+    highlightRow(updateData);
+    setUpdateData(null);
+  };
 
   const postStudentData = async () => {
-    const body=JSON.stringify(inputData)
-    const result= await genrealService(method.post,route.add,{Content_Type: "application/json"},body)
+    const body = JSON.stringify(inputData);
+    const result = await generalService(
+      method.post,
+      route.add,
+      { Content_Type: "application/json" },
+      body
+    );
     alert("Input added successfully.");
-     handleReset();
+    handleReset();
     getStudentData();
-    scrollTobottom()
+    scrollToBottom();
   };
 
   const getStudentData = async () => {
-    const result = await genrealService("GET","")
+    const result = await generalService(method.get, route.get);
     setStudentData(result.students);
   };
 
   const deleteStudentData = async (id) => {
-const result = await genrealService(method.delete,route.delete(id))  
-getStudentData();
-  }
- 
+    const result = await generalService(method.delete, route.delete(id));
+    getStudentData();
+  };
+
   const handleDelete = (id) => {
-    const updatedId =id;
-    // setDeleteData(updatedId);
-    
-    if(confirm("Are you want to Delete the row")){
+    highlightRow(id);
+    if (confirm("Do you want to Delete this row?")) {
       deleteStudentData(id);
     }
-    // deleteStudentData();
   };
 
   useEffect(() => {
@@ -178,6 +170,7 @@ getStudentData();
               scrollToTop={scrollToTop}
               rowRefs={rowRefs}
               handleDelete={handleDelete}
+              setTableTheme={setTableTheme}
             />
           }
         ></Route>

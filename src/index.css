@@ -6,8 +6,13 @@
   height: 100%;
 
   color-scheme: light dark;
-  color: black;
-  background-color: white;
+  --main-color: #374375;
+  --secondary-color: #975a63;
+  --ternary-color: #1a1a1a;
+  --font-color: #fffcf5;
+  --error-color: #d10000;
+  color: var(--font-color);
+  background-color: var(--main-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,8 +24,8 @@ body {
   color: inherit;
   margin: 0;
   min-width: auto;
-  min-height: 100vh;
-  background: #404040;
+  min-height: auto;
+  background: #374375;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,11 +46,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #404040;
+  background: var(--main-color);
 }
 table {
   width: 90%;
   border-collapse: collapse;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
 }
 td,
 th {
@@ -54,56 +63,78 @@ th {
   width: 338.6px;
   height: 48px;
 }
+
+caption {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 50px;
+  left: 20px;
+  width: fit-content;
+  font-size: 25px;
+  color: var(--font-color);
+}
+
+h2 {
+  font-family: "Lexend", serif;
+  font-size: 40px;
+}
+
 .arrow {
   position: relative;
   top: 6px;
 }
 
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  transform: scale(0.9);
+}
 
 .themebtn {
   width: 50px;
   height: 50px;
   position: relative;
-  left: 500px;
+  left: 600px;
   padding: 5px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background-color: #000000;
-}
-.themebtn > button:active {
-  opacity: 0.6;
+  background-color: var(--ternary-color);
 }
 
-.deletebtn > button{
+.deletebtn > button {
   font-family: "Lexend", serif;
-  width: 30px;
-  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
   padding: 5px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background-color: #000000;
-}
-.deletebtn > button:active {
-  opacity: 0.6;
+  background-color: var(--secondary-color);
 }
 
-.fa-solid.fa-trash{
-  color: white;
+.fa-solid.fa-trash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
   width: 20px;
   height: 20px;
 }
 
-.actionbtns{
+.actionbtns {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
-
-
 
 .cell2,
 .cell3,
@@ -135,7 +166,7 @@ th {
 }
 
 .cell5 {
-  background-color: rgb(228, 73, 73);
+  background-color: var(--secondary-color);
   border: none;
   border-radius: 8px;
   padding: 5px;
@@ -143,12 +174,12 @@ th {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--font-color);
   width: 70px;
   cursor: pointer;
 }
 
-.cell5.submit{
+.cell5.submit {
   font-family: "Lexend", serif;
   font-weight: 600;
   width: 120px;
@@ -156,28 +187,29 @@ th {
   left: 0px;
 }
 
-.cell5.view{
+.cell5.view {
   font-family: "Lexend", serif;
   font-weight: 600;
-  width: 80px;
+  width: 100px;
   height: 40px;
 }
 
-.cell5.submit > button :active{
+.cell5.submit > button :active {
   transform: scale(5px);
 }
 
-.cell5 > p{
+.cell5 > p {
   margin: 0;
 }
 
 .color-light {
-  background-color: #ffffff;
+  background-color: var(--font-color);
+  color: var(--ternary-color);
 }
 
 .color-dark {
-  background-color: #1a1a1a;
-  color: #e6e6e6;
+  background-color: var(--ternary-color);
+  color: var(--font-color);
 }
 
 .cell1 {
@@ -189,7 +221,7 @@ th {
 
 .name,
 .mail {
-  width: 100px;
+  width: 120px;
   position: relative;
 }
 
@@ -212,32 +244,33 @@ th {
   width: 20%;
 }
 
-input{
+input {
+  font-family: "Lexend", serif;
   width: 400px;
-  background-color: white;
+  background-color: var(--font-color);
   padding: 10px;
   border-radius: 5px;
   border: none;
-  color: #000000;
+  color: var(--ternary-color);
 }
 
-.singleInput{
+.singleInput {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   margin: 5px;
   gap: 10px;
-  color: white;
+  color: var(--font-color);
 }
 
-.inputcolumn{
-  display:flex;
+.inputcolumn {
+  display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.InputForm{
+.InputForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -246,18 +279,17 @@ input{
   margin-top: 20px;
 }
 
-.error{
+.error {
   font-size: 12px;
-  color: rgb(255, 0, 0);
+  color: var(--error-color);
   margin: 0;
 }
-
 
 @media (min-width: 768px) and (max-width: 1024px) {
   html,
   body {
     width: 1024px;
-    height: 100vh;
+    height: auto;
   }
 
   th,
@@ -305,7 +337,7 @@ input{
     padding: 8px;
     left: 1px;
   }
-  button {
+  .themebtn {
     left: 400px;
   }
   .arrow {
@@ -318,7 +350,7 @@ input{
   html,
   body {
     width: 768px;
-    height: 100vh;
+    height: auto;
   }
 
   .main-div {
@@ -374,7 +406,7 @@ input{
     padding: 6px;
     left: 1px;
   }
-  button {
+  .themebtn {
     left: 300px;
   }
   .arrow {
@@ -388,7 +420,7 @@ input{
   html,
   body {
     width: 425px;
-    height: 100vh;
+    height: auto;
   }
 
   .main-div {
@@ -428,7 +460,7 @@ input{
     width: 90px;
     height: 30px;
   }
-  
+
   .cell2 {
     left: 1px;
   }
@@ -445,8 +477,8 @@ input{
     padding: 6px;
     left: 1px;
   }
-  button {
-    left: 550px;
+  .themebtn {
+    left: 150px;
   }
   .arrow {
     top: 3px;
