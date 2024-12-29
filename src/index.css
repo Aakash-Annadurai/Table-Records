@@ -60,20 +60,49 @@ th {
 }
 
 
-button {
+.themebtn {
   width: 50px;
   height: 50px;
   position: relative;
-  left: 600px;
+  left: 500px;
   padding: 5px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   background-color: #000000;
 }
-button:active {
+.themebtn > button:active {
   opacity: 0.6;
 }
+
+.deletebtn > button{
+  font-family: "Lexend", serif;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #000000;
+}
+.deletebtn > button:active {
+  opacity: 0.6;
+}
+
+.fa-solid.fa-trash{
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
+.actionbtns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 
 
 .cell2,
@@ -107,6 +136,7 @@ button:active {
 
 .cell5 {
   background-color: rgb(228, 73, 73);
+  border: none;
   border-radius: 8px;
   padding: 5px;
   display: flex;
@@ -114,16 +144,27 @@ button:active {
   justify-content: center;
   align-items: center;
   color: white;
-  position: relative;
-  left: 65px;
-  width: 100px;
+  width: 70px;
+  cursor: pointer;
 }
 
 .cell5.submit{
+  font-family: "Lexend", serif;
+  font-weight: 600;
+  width: 120px;
+  height: 40px;
+  left: 0px;
+}
+
+.cell5.view{
+  font-family: "Lexend", serif;
   font-weight: 600;
   width: 80px;
   height: 40px;
-  left: 0px;
+}
+
+.cell5.submit > button :active{
+  transform: scale(5px);
 }
 
 .cell5 > p{
