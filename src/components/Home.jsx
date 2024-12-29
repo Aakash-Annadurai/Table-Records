@@ -1,4 +1,4 @@
-import path from "../path";
+import path from "../constant";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

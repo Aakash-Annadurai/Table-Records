@@ -1,11 +1,13 @@
 import React from "react";
 import Table from "./Table";
 import { Route, Routes} from "react-router-dom";
-import path from "./path";
+import path, { method, route } from "./constant";
 import Home from "./components/Home";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { areAllKeysEmpty, scrollTobottom, scrollToTop } from "./utils/commonfunctions";
+import { genrealService } from "./utils/servicesUtils";
 
 function App() {
   const [studentData, setStudentData] = useState([]);
@@ -39,11 +41,11 @@ function App() {
     setInputData({ ...temp });
     validationForKey(name);
   };
-  const highlightRow = (index) => {
-    if (rowRefs.current[index]) {
-      rowRefs.current[index].style.backgroundColor = "yellow";
-    }
-  };
+  // const highlightRow = (index) => {
+  //   if (rowRefs.current[index]) {
+  //     rowRefs.current[index].style.backgroundColor = "yellow";
+  //   }
+  // };
   const handleReset = () => {
     setInputData({
       ...{
@@ -57,18 +59,7 @@ function App() {
     });
   };
 
-  function areAllKeysEmpty(obj) {
-    return Object.values(obj).every(
-      (value) =>
-        value === null ||
-        value === undefined ||
-        value === "" ||
-        (Array.isArray(value) && value.length === 0) ||
-        (typeof value === "object" &&
-          value !== null &&
-          Object.keys(value).length === 0)
-    );
-  }
+  
 const validationForKey =(key)=>{
   let temp = error;
   if (!inputData[key]) {
@@ -108,11 +99,7 @@ const validationForKey =(key)=>{
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });}
+
 
   const putStudentData = async () => {
     const url = `https://studentinfoapi.p.rapidapi.com/students/update/${updateData}`;
@@ -141,74 +128,32 @@ try {
   }
 
   const postStudentData = async () => {
-    const url = "https://studentinfoapi.p.rapidapi.com/students/add";
-    const options = {
-      method: "POST",
-      headers: {
-        "x-rapidapi-key": "15ffea1c9fmsh31fafcf35aab04cp1f718ejsnd16f8057c7cf",
-        "x-rapidapi-host": "studentinfoapi.p.rapidapi.com",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputData),
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.text();
-      console.log(result);
-      alert("Input added successfully.");
-      handleReset();
-      getStudentData();
-    } catch (error) {
-      console.error(error);
-    }
+    const body=JSON.stringify(inputData)
+    const result= await genrealService(method.post,route.add,{Content_Type: "application/json"},body)
+    alert("Input added successfully.");
+     handleReset();
+    getStudentData();
+    scrollTobottom()
   };
 
   const getStudentData = async () => {
-    const url =
-      "https://studentinfoapi.p.rapidapi.com/students?url=https%3A%2F%2Fstudentinfoapi.p.rapidapi.com%2Fstudents";
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "15ffea1c9fmsh31fafcf35aab04cp1f718ejsnd16f8057c7cf",
-        "x-rapidapi-host": "studentinfoapi.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      setStudentData(result.students);
-    } catch (error) {
-      console.error(error);
-    }
+    const result = await genrealService("GET","")
+    setStudentData(result.students);
   };
 
-  const deleteStudentData = async () => {
-    const url = `https://studentinfoapi.p.rapidapi.com/students/delete/${deleteData}`;
-const options = {
-	method: 'DELETE',
-	headers: {
-		'x-rapidapi-key': '15ffea1c9fmsh31fafcf35aab04cp1f718ejsnd16f8057c7cf',
-		'x-rapidapi-host': 'studentinfoapi.p.rapidapi.com',
-		'Content-Type': 'application/json'
-	},
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-  getStudentData();
-} catch (error) {
-	console.error(error);
-}
+  const deleteStudentData = async (id) => {
+const result = await genrealService(method.delete,route.delete(id))  
+getStudentData();
   }
-
+ 
   const handleDelete = (id) => {
     const updatedId =id;
-    setDeleteData(updatedId);
-    deleteStudentData();
+    // setDeleteData(updatedId);
+    
+    if(confirm("Are you want to Delete the row")){
+      deleteStudentData(id);
+    }
+    // deleteStudentData();
   };
 
   useEffect(() => {
