@@ -8,7 +8,7 @@ const Home = () => {
         <div className="homepage">
           <h1>Aakash's Demo Table</h1>
           <button
-            className="cell5 store1"
+            className="cell5 view"
             onClick={() => {
               navigate(path.table);
             }}

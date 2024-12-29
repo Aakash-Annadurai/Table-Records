@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "./Table";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import path from "./path";
 import Home from "./components/Home";
 import { useState } from "react";
@@ -121,6 +121,7 @@ try {
   alert("Updated Successfully!")
   getStudentData();
   highlightRow(updateData);
+  setUpdateData(null);
 } catch (error) {
 	console.error(error);
 }

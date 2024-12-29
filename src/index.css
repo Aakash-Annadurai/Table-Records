@@ -151,9 +151,16 @@ th {
 .cell5.submit{
   font-family: "Lexend", serif;
   font-weight: 600;
-  width: 80px;
+  width: 120px;
   height: 40px;
   left: 0px;
+}
+
+.cell5.view{
+  font-family: "Lexend", serif;
+  font-weight: 600;
+  width: 80px;
+  height: 40px;
 }
 
 .cell5.submit > button :active{
