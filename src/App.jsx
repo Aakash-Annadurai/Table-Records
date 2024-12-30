@@ -35,8 +35,6 @@ function App() {
     enrollment_date: "",
   });
 
-  const [tableTheme, setTableTheme] = useState(true);
-
   const rowRefs = useRef([]);
 
   const onInputChange = (e) => {
@@ -95,9 +93,7 @@ function App() {
         block: "center",
       });
       setTimeout(() => {
-        rowRefs.current[index].style.backgroundColor = tableTheme
-          ? "#fffcf5"
-          : "#1a1a1a";
+        rowRefs.current[index].style.backgroundColor = "";
       }, 2000);
     }
   };
@@ -170,7 +166,6 @@ function App() {
               scrollToTop={scrollToTop}
               rowRefs={rowRefs}
               handleDelete={handleDelete}
-              setTableTheme={setTableTheme}
             />
           }
         ></Route>
