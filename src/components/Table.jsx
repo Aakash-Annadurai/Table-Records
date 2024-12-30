@@ -14,7 +14,6 @@ export default function Table({
   scrollToTop,
   rowRefs,
   handleDelete,
-  setTableTheme,
 }) {
   const [theme, settheme] = useState(true);
 
@@ -166,7 +165,6 @@ export default function Table({
                         setUpdateData(key);
                         setInputData({ ...element });
                         scrollToTop();
-                        setTableTheme(theme);
                       }}
                     >
                       <p>EDIT</p>
@@ -175,7 +173,6 @@ export default function Table({
                       <button
                         onClick={() => {
                           handleDelete(key);
-                          setTableTheme(theme);
                         }}
                       >
                         <i class="fa-solid fa-trash"></i>
