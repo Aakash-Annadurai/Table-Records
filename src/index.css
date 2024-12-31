@@ -509,6 +509,9 @@ input {
     width: 18px;
     height: 18px;
   }
+  input{
+    width: 300px;
+  }
   .InputForm {
     padding: 0;
     align-items: center;
